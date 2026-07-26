@@ -328,6 +328,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .contact__actions {
   display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+  margin-top: 38px;
 }
 .contact__place {
   margin-top: 22px; font-size: 12.5px; letter-spacing: .18em;
@@ -611,15 +612,12 @@ button { font-family: inherit; cursor: pointer; }
 .contact .chapter::before { content: ""; width: 56px; height: 1px; background: currentColor; opacity: .5; }
 .contact__title {
   font-family: var(--font-display);
-  font-size: clamp(38px, 6.4vw, 76px);
-  font-weight: 600; line-height: 1.12; letter-spacing: -.01em;
+  font-size: clamp(28px, 4.2vw, 46px);
+  font-weight: 600; line-height: 1.35; letter-spacing: -.005em;
   color: var(--ink);
+  max-width: 26ch; margin: 22px auto 0;
 }
 .contact__title em { font-style: italic; font-weight: 500; color: var(--gold); }
-.contact__sub {
-  margin: 22px auto 38px; max-width: 52ch;
-  color: var(--mut); font-weight: 300;
-}
 .footer {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px; flex-wrap: wrap;
