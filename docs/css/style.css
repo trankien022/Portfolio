@@ -179,9 +179,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 /* mỗi dòng là một block riêng, không clip — dấu tiếng Việt và đuôi chữ "g" hiển thị đủ */
 .hero__title-line { display: block; white-space: nowrap; }
+/* cả tên dùng chung một font, một màu — không nhấn riêng chữ "Trang" */
 .hero__title-accent {
-  font-style: italic; font-weight: 500;
-  color: var(--gold-deep);
+  font-style: normal; font-weight: inherit;
+  color: inherit;
 }
 .hero__lede {
   max-width: 52ch; color: var(--mut);
