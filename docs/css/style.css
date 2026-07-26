@@ -169,7 +169,12 @@ button { font-family: inherit; cursor: pointer; }
   position: relative; z-index: 2;
   flex: 1 0 auto;   /* không co lại — tránh cắt mất phần trên của hero */
 }
-.hero__eyebrow { margin-bottom: 22px; }
+/* dòng eyebrow nằm dưới tên, có gạch phân cách nhẹ */
+.hero__eyebrow {
+  margin-top: 18px; padding-top: 18px;
+  border-top: 1px solid var(--line-gold);
+  display: inline-block;
+}
 .hero__title {
   font-family: var(--font-display);
   font-size: clamp(44px, 6.2vw, 86px);
@@ -491,7 +496,11 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ---------- học vấn ---------- */
-.section--edu { padding-top: 0; }
+/* Học vấn nằm ngay dưới Kỹ năng nhưng có khối riêng, tiêu đề đứng đầu khối */
+.section--edu {
+  padding-top: clamp(56px, 8vh, 90px);
+  border-top: 1px solid var(--line);
+}
 .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .edu__card {
   border: 1px solid var(--line); border-radius: 14px;
