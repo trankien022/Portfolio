@@ -169,11 +169,15 @@ button { font-family: inherit; cursor: pointer; }
   position: relative; z-index: 2;
   flex: 1 0 auto;   /* không co lại — tránh cắt mất phần trên của hero */
 }
-/* dòng eyebrow nằm dưới tên, có gạch phân cách nhẹ */
-.hero__eyebrow {
-  margin-top: 18px; padding-top: 18px;
+/* chức danh nằm dưới tên, có gạch phân cách nhẹ */
+.hero__role {
+  margin-top: 16px; padding-top: 18px;
   border-top: 1px solid var(--line-gold);
   display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.2vw, 26px);
+  font-weight: 500; letter-spacing: .01em;
+  color: var(--ver);
 }
 .hero__title {
   font-family: var(--font-display);
@@ -303,6 +307,36 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--ver); margin-bottom: 4px;
 }
 .about__facts dd { font-size: 15px; color: var(--ink); line-height: 1.5; }
+/* mục tiêu nghề nghiệp */
+.goal { display: grid; gap: 16px; }
+.goal__item {
+  background: var(--card); border: 1px solid var(--line);
+  border-left: 3px solid var(--gold); border-radius: 12px;
+  padding: 24px 26px;
+}
+.goal__label {
+  font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ver); margin-bottom: 10px;
+}
+.goal__item p:last-child { color: var(--mut); font-size: 15px; font-weight: 300; }
+
+.skills__note {
+  margin-top: 18px; padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px; color: var(--gold-deep);
+}
+
+.contact__actions {
+  display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+}
+.contact__place {
+  margin-top: 22px; font-size: 12.5px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--mut);
+}
+
+.about__facts dd a { color: var(--gold-deep); transition: color .3s; }
+.about__facts dd a:hover { color: var(--ver); }
+
 .about__mail {
   display: block; margin-top: 24px; padding-top: 20px;
   border-top: 1px solid var(--line);
@@ -350,6 +384,34 @@ button { font-family: inherit; cursor: pointer; }
 .project__roles li::before {
   content: "✦"; position: absolute; left: 0; top: 0; color: var(--gold); font-size: 12px;
 }
+/* tiêu đề nhỏ chia khối bên trong một dự án */
+.block__title {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.1vw, 24px); font-weight: 600;
+  margin: clamp(34px, 5vh, 52px) 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: baseline; gap: 12px;
+}
+.block__title::before { content: "✦"; color: var(--gold); font-size: 13px; }
+
+/* bối cảnh đề tài: vấn đề · phạm vi · giải pháp · giá trị */
+.brief { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.brief__card {
+  background: var(--card); border: 1px solid var(--line);
+  border-left: 3px solid var(--ver);
+  border-radius: 12px; padding: 26px 26px;
+}
+.brief__card:nth-child(3), .brief__card:nth-child(4) { border-left-color: var(--gold); }
+.brief__label {
+  font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ver); margin-bottom: 12px;
+}
+.brief__card:nth-child(3) .brief__label,
+.brief__card:nth-child(4) .brief__label { color: var(--gold-deep); }
+.brief__card p:last-child { color: var(--mut); font-size: 15px; font-weight: 300; }
+.brief__card em { color: var(--ink); font-style: italic; }
+
 .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .tags span {
   font-size: 12.5px; letter-spacing: .06em;
@@ -425,6 +487,9 @@ button { font-family: inherit; cursor: pointer; }
 .evidence__grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
 }
+.evidence__grid--5 { grid-template-columns: repeat(5, 1fr); }
+/* trong khối minh chứng, slide nằm trên lưới trang tài liệu */
+.evidence .th-slides { margin-top: 0; margin-bottom: 18px; }
 .evidence__item {
   border: 1px solid var(--line); border-radius: 10px;
   overflow: hidden; cursor: zoom-in; background: #fff;
@@ -458,9 +523,9 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase;
   color: var(--gold-deep); margin-bottom: 14px;
 }
-.advance__card h4 {
-  font-family: var(--font-display); font-size: 20px; font-weight: 600;
-  margin-bottom: 10px; color: var(--ink);
+.advance__card h5 {
+  font-family: var(--font-display); font-size: 19px; font-weight: 600;
+  margin-bottom: 10px; color: var(--ink); line-height: 1.35;
 }
 .advance__card p:last-child { font-size: 14.5px; color: var(--mut); font-weight: 300; }
 
@@ -606,7 +671,8 @@ a:focus-visible, button:focus-visible {
 
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
-  .skills, .advance, .evidence__grid { grid-template-columns: 1fr 1fr; }
+  .skills, .advance, .evidence__grid, .evidence__grid--5 { grid-template-columns: 1fr 1fr; }
+  .brief { grid-template-columns: 1fr; }
   .about { grid-template-columns: 1fr; }
   .hero__inner { grid-template-columns: 1fr; text-align: left; padding-top: 108px; }
   .hero__portrait { order: -1; justify-self: start; }
@@ -628,7 +694,7 @@ a:focus-visible, button:focus-visible {
   }
   .nav__burger[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
   .nav__burger[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .skills, .advance, .edu, .th-slides, .evidence__grid { grid-template-columns: 1fr; }
+  .skills, .advance, .edu, .th-slides, .evidence__grid, .evidence__grid--5 { grid-template-columns: 1fr; }
   .hero__stats { flex-wrap: wrap; gap: 22px; }
   /* tên có thể xuống dòng trên máy rất nhỏ để không tràn ngang */
   .hero__title-line { white-space: normal; }
